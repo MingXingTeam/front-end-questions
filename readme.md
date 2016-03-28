@@ -66,9 +66,39 @@
 
     * 2倍屏，3倍屏的自适应
 
+* 盒模型
+
+    * margin, border, padding组成
+    * margin是外边距，border是边框，padding是内边距。
+    * 块状元素，行内元素
+        * 块状元素占据一行，比如p, div, h2等
+        * 行内元素又有：inline-block inline。span、a是inline。inline-block可以设置宽高和margin，padding，border；inline设置宽高无效，padding，margin左右有效，上下无效，border是上面border无效。
+    * IE的盒模型有点区别
+    * margin不计入盒模型宽和高, html5的话，如果是box-sizing:border-box则padding和border计入宽高，为content－box不计入宽高
+   
+    
+
 ####[[⬆]](#toc) <a name='html'>HTML 相关问题</a>
+
+* 路由的实现原理？
+
+
+
 ####[[⬆]](#toc) <a name='js'>JS 相关问题</a>
 
+* JS基本数据类型
+
+    * bool, string, number, null, undefined, object, array
+
+* 数组有哪些方法？
+
+    * shift, unshift, slice, splice, push, pop, map
+    * slice是取数组的一部分
+    * splice是删除数组的某些元素，返回新的数组
+    * push是添加元素，相当于入栈
+    * pop是出栈
+    * map是遍历数组，回调是有数组的index
+    
 * alert(1&&2) 输出什么？ 2
 * 写出下面代码的输出值：
 
