@@ -10,6 +10,7 @@
 1. [jQuery 相关问题](#jquery)
 1. [正则表达式 相关问题](#reg)
 1. [设计模式 相关问题](#pattern)
+1. [浏览器 相关问题](#browser)
 
 ####[[⬆]](#toc) <a name='general'>常见问题</a>
 
@@ -31,8 +32,6 @@
 * 当问到最具挑战的部分的时候？
 
     * 不要说你要学很多语言和技术。这是一种逃避的答案，这好像告诉面试者没有什么是真的困难的。
-    
-
 
 ####[[⬆]](#toc) <a name='html'>常见问题</a>
 ####[[⬆]](#toc) <a name='css'>CSS 相关问题</a>
@@ -45,20 +44,37 @@
     *background: blue;
     background:  black\9;
     ```
+
+    * _ ：IE6支持
+    * * : IE6、7支持(IE6不支持!important)
+    * \9: 所有IE都支持
+
 * 添加些CSS让其水平垂直居中
 
     ```html
     <div style="____________">xxx</div>
     ```
     
+    * position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-25%,-25%);
+
 * 如下代码，在空白处填写代码，其点击时，前景色为白色，背景色为黑色。
 
     ```html
     <div onclick="_______________">xxxxx</div>
     ```
+
+    * !function(me){me.style.cssText='background:black;color:#ffffff'}(this)
+
 * 自适应布局
 
     * 关于左右自适应的，不低于10种解决方案，还要看dom结构要求是并列还是嵌套，是否允许有父级元素，是否允许使用CSS3，是否有背景色，是否要两列等高，等等
+
+    ```
+
+    ```
 
     * 而关于自适应高度的解决方案就略少一些，大致也是靠，CSS3的calc属性，内padding，绝对定位后拉伸，动态js计算等等解决方案，同样也是要看应用场景能用哪个
     
@@ -76,29 +92,92 @@
     * IE的盒模型有点区别
     * margin不计入盒模型宽和高, html5的话，如果是box-sizing:border-box则padding和border计入宽高，为content－box不计入宽高
    
+* 什么是BFC?   
+
+    * BFC是指“块级格式上下文”，当一个元素生成BFC的时候，它会有一套渲染规则，比如内部元素的布局不会影响外部元素，比如BFC元素的高度包含浮动元素的高度，相邻元素margin不会发生重叠等
+    * float：left； display: inline-block; overflow非none；absolute定位；display:table-cell等都会生成BFC
+
+* 媒体查询？
+
+    * 1px逻辑像素=2^2物理像素
+      iPhone4、5、5s分辨率320x568，像素640x1136，@2x
+      iPhone6分辨率375x667，像素750x1334，@2x
+      iPhone6 Plus分辨率414x736，像素1242x2208，@3x
+    * viewport的宽度设置为640然后通过计算window.screen.width/640缩放，font-size设置为125% 刚好是20px；width设置为4rem 刚好为80px
+    * 响应式布局一般是改变样式(比如隐藏某些元素，增加新的样式)
+
+* 等高布局
     
+    * margin-bottom:-1000px; padding-bottom: 1000px;
+    * display: table; table-layout: fixed; display: table-cell;width: 50%;
+
+* 等宽布局
+
+    * flex-box
+    * display: table; table-layout: fixed; display: table-cell;
+
+* rem, em区别？
+
+    * rem是相对跟元素
+    * rem是相对父元素
+
+* 什么情况下会重绘和重排？
+
+    * 字体变化、颜色变化、背景图片等变化都会导致重绘。
+    * 宽度和高度变化、内容变化、border变化都会导致重排。
+    * 重排一定会导致重绘
+    * 尽量避免重绘和重排能提高页面性能：比如用cssText代替，style.width等
 
 ####[[⬆]](#toc) <a name='html'>HTML 相关问题</a>
 
 * 路由的实现原理？
 
+    * window.onhashchange(newURL, oldURL)
+
+* SessionStorage和LocalStorage
+
+  * SessionStorage是一次会话，浏览器不关闭则一直存在
+  * LocalStorage一直存在
+
+* 返回一个页面的时候如何不刷新页面（或者不请求数据）？
+    
+  * history.pushState?不确定
 
 
 ####[[⬆]](#toc) <a name='js'>JS 相关问题</a>
 
 * JS基本数据类型
 
-    * bool, string, number, null, undefined, object, array
+    * boolean, number, null, undefined, object, string,
 
 * 数组有哪些方法？
 
-    * shift, unshift, slice, splice, push, pop, map
-    * slice是取数组的一部分
-    * splice是删除数组的某些元素，返回新的数组
+    * shift, unshift, slice, splice, push, pop, map, sort, forEach, concat
+    * shift删除数组的第一个元素，并返回删除的元素(原数组发生改变了)
+    * unshift(elem)添加元素到数组头部，并返回新的数组的长度
+    * slice(start, end)是取数组的一部分，返回新的数组
+    * splice(start, deleteCount, addItem..)是删除数组的某些元素并添加新元素到末尾
     * push是添加元素，相当于入栈
     * pop是出栈
-    * map是遍历数组，回调是有数组的index
-    
+    * map是遍历数组，回调参数是currentValue, index, array
+
+* 动态事件绑定实现的原理是？
+
+    * 冒泡
+
+* 怎么实现文件跨域上传？
+    * 一般上传文件是form提交(enctype="multipart/form-data")
+    * 跨域：服务器代理；jsonp；script标签；cors
+
+* Angular和React的区别，为什么使用Angualr或React，怎么选？
+
+    * Angular比较大，有很多特性，比如Directive, 模板，双向绑定啥的。开发小项目很快，但大项目复杂度大了，因为有很多API会比较难维护。
+    * React只专注View层比较轻量，而且它有虚拟DOM的特性（只产生一棵渲染差异树），性能会比较好。
+
+* append和innerHTML的区别？
+
+    * append要找到当前元素，遍历子元素，再拼接；而innerHTML直接替换就行。
+
 * alert(1&&2) 输出什么？ 2
 * 写出下面代码的输出值：
 
@@ -118,6 +197,11 @@
 	obj.b.call(window);
 
 	```
+
+    * 1
+    * 2
+    * 2
+
 * 写出下面代码的输出值？
 
 	```javascript
@@ -141,6 +225,14 @@
 	console.log(new C(2));
 	```
 
+    * { } //why ? A对象本身没有属性，但是如果是A.a 则会打印出1(如果当前对象里没有 则到原型里找a属性)
+    * {a: undefined}
+    * {a: 2}
+
+* webpack如何调试？
+
+    * source-map。webpack的配置项里有一个dev-tools，配置成eval就行了
+
 * 写出下面代码的输出值
 
 	```javascript
@@ -155,6 +247,8 @@
 
 	b()();
 	```
+
+    * 2
 
 * 书写代码，点击时从1分钟开始，每秒递减到0
     
