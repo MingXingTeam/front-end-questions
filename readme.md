@@ -94,8 +94,9 @@
    
 * 什么是BFC?   
 
-    * BFC是指“块级格式上下文”，当一个元素生成BFC的时候，它会有一套渲染规则，比如内部元素的布局不会影响外部元素，比如BFC元素的高度包含浮动元素的高度，相邻元素margin不会发生重叠等
-    * float：left； display: inline-block; overflow非none；absolute定位；display:table-cell等都会生成BFC
+    * BFC是指“块级格式上下文”，当一个元素生成BFC的时候，它会有一套渲染规则。
+    * BFC现象：在一个BFC中，相邻块级元素的垂直外边距会发生折叠(折叠有一定规则)
+    * 生成BFC的方式：浮动元素、绝对定位元素、非块级盒子的块级容器(inline-block, table-cell, table-caption)、overflow值不为visiable的块级盒子。
 
 * 媒体查询？
 
@@ -256,6 +257,10 @@
     <div onclick="test()">xxx</div>
     ```
 
+* document.ready和window.onload的区别？
+
+    * ready是DOM树形成时调用，onload是页面所有渲染完成并且资源请求成功后调用。
+
 * 简述在IE下mouseover和mouseenter的区别
 
     * IE下先调用mouse
@@ -371,6 +376,11 @@
 
 * 观察者模式，职责链模式，工厂模式(UI组件封装时用到)
 
+####[[⬆]](#toc) <a name='browser'>浏览器 相关问题</a>
+
+* HTTP缓存机制？
+    
+   
 
 =================
 
