@@ -258,6 +258,8 @@
 
 * 简述在IE下mouseover和mouseenter的区别
 
+    * IE下先调用mouse
+
 * 手写事件模型和事件代理/委托
 
     * 捕获、目标、冒泡 低版本IE不支持捕获阶段
