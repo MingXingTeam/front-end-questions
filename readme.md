@@ -60,6 +60,29 @@
       left:50%;
       transform:translate(-25%,-25%);
 
+    * display: flex;
+      align-items: center;
+      justify-content: center;  
+
+    * height: 90px;
+      line-height: 90px;
+      margin: 0 auto;
+
+    *文本垂直水平居中：
+        div {
+          display: table;
+          width: 250px;
+          height: 100px;
+          text-align: center;
+        }
+
+        span {
+          display: table-cell;
+          vertical-align: middle;
+        }
+    
+    *
+    
 * 如下代码，在空白处填写代码，其点击时，前景色为白色，背景色为黑色。
 
     ```html
