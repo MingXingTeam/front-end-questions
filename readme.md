@@ -131,19 +131,6 @@
 
 ####[[⬆]](#toc) <a name='html'>HTML 相关问题</a>
 
-* 路由的实现原理？
-
-    * window.onhashchange(newURL, oldURL)
-
-* SessionStorage和LocalStorage
-
-  * SessionStorage是一次会话，浏览器不关闭则一直存在
-  * LocalStorage一直存在
-
-* 返回一个页面的时候如何不刷新页面（或者不请求数据）？
-    
-  * history.pushState?不确定
-
 
 ####[[⬆]](#toc) <a name='js'>JS 相关问题</a>
 
@@ -161,6 +148,31 @@
     * push是添加元素，相当于入栈
     * pop是出栈
     * map是遍历数组，回调参数是currentValue, index, array
+
+* 字符串有哪些方法？
+
+    * match，replace，search，indexOf, lastIndexOf, split， substring, concat, includes, slice
+    * includes:判断一个字符串是否是另一个字符串的串
+    * “asdf”.match(//): 匹配正则
+    * replace(//,"$1"): 匹配正则并替换
+    * slice： 提取字符串的一部分
+
+* 路由的实现原理？
+
+    * 设置一个对浏览器的地址的监听或者用window.onhashchange(newURL, oldURL)
+    * 对每一个hash注册不同的回调函数
+    * hash改变时，调用window.history.pushState将路由地址放入参数中。
+
+* 前端模块管理器的实现原理？
+
+    * XMLHttpRequest同步请求文件数据(非跨域，如果跨域用script)
+    * 用iFrame的eval执行返回文件数据，并定义access方法(with方法)
+    * export方法本质：Object.defineProperty定义get和set方法，再访问host的eval方法
+
+* SessionStorage和LocalStorage
+
+  * SessionStorage是一次会话，浏览器不关闭则一直存在
+  * LocalStorage一直存在
 
 * 动态事件绑定实现的原理是？
 
@@ -261,27 +273,15 @@
 
     * ready是DOM树形成时调用，onload是页面所有渲染完成并且资源请求成功后调用。
 
-* 简述在IE下mouseover和mouseenter的区别
+* 手写事件代理/委托
 
-    * IE下先调用mouse
+    * 原理： 绑定事件到父元素，事件冒泡机制
 
-* 手写事件模型和事件代理/委托
+* 手写事件模型
 
-    * 捕获、目标、冒泡 低版本IE不支持捕获阶段
+    * addEventListener, removeEventListener, attachEvent, detachEvent
+    * event.currentTarget绑定事件的元素， event.target当前被点击的元素(IE下是srcElement和this)
     
-    * IE和w3c不同绑定事件解绑事件的方法有什么区别，参数分别是什么，以及事件对象e有什么区别
-    
-    * 事件代理/委托的原理以及优缺点
-        
-        * 原理：事件冒泡机制  
-        * 优点：节省内存占用，减少事件注册; 动态内容绑定很方便
-        * 所有代理委托给document或body的坏处：可能出现事件误判
-    * 手写原生JS实现事件代理并要兼容浏览器(考核事件对象e和e在IE对应的属性名：target, currentTarget, IE下是srcElement和this)
-    * 实现事件模型：写一个类或是一个模块，有两个函数 一个绑定一个trigger。分别实现绑定事件和触发事件。(对某一个时间名称绑定多个事件响应函数，然后触发这个时间名称时触发对应的函数)
-    
-        * 触发响应函数的上下文，触发响应函数的参数列表应该是什么，把arguments转为数组
-        * 事件广播dispatchEvent
-        
 * 前端性能优化 (懂则讲 不懂略过)
 
     * 网络性能优化；加快访问速度；浏览器并行加载数量；原生JS异步载入；CDN加速的原理；静态资源发布到多个域名服务器(发布后这些静态字段的url路径如何批量改)；项目打包工具；css打包后的相对路径怎么转绝对路径；项目模块依赖管理工具；cookie优化
