@@ -129,6 +129,12 @@
       iPhone6 Plus分辨率414x736，像素1242x2208，@3x
     * viewport的宽度设置为640然后通过计算window.screen.width/640缩放，font-size设置为125% 刚好是20px；width设置为4rem 刚好为80px
     * 响应式布局一般是改变样式(比如隐藏某些元素，增加新的样式)
+    
+* 响应式布局
+    
+    * 媒体查询设置视口断点
+    * 流体布局技术：display:inline-block；max-width&min-width；column-width;display:flex;vm(根据可视区域变化);img标签的srcset和imageset适配2倍屏和3倍屏；锁定宽高比(伪类，纵向padding)；矢量图
+    
 
 * 等高布局
     
