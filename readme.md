@@ -180,6 +180,12 @@
     * replace(//,"$1"): 匹配正则并替换
     * slice： 提取字符串的一部分
 
+* 懒加载的实现原理？
+    
+    * 判断是否在页面显示区域，如果在显示区域则载入图片
+    * 页面显示区域(document.innerHeight&document.innerWidth)(getBoundingClientRect()方法)
+    * 载入图片：setAttribute("src", src)
+
 * 路由的实现原理？
 
     * 设置一个对浏览器的地址的监听或者用window.onhashchange(newURL, oldURL)
@@ -313,7 +319,7 @@
 
     [闭包测试题目](http://www.cnblogs.com/xxcanghai/p/4991870.html)
     
-* 手写Function.bind函数
+* 手写Function.prototype.bind函数
 
     * 保持函数的this指向
     * 保持函数的所有参数都传递到目标函数
